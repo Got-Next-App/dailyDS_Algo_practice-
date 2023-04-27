@@ -61,3 +61,37 @@ const twoSumVersionTwo = (nums, target) => {
 }
 
 console.log(twoSumVersionTwo([2, 7, 11, 15], 22))
+
+//April 26 2003 Wednesday
+// Given a square matrix, calculate the absolute difference between the sums of its diagonals.
+
+// For example, the square matrix  is shown below:
+
+// 1 2 3
+// 4 5 6
+// 9 8 9
+const matrix = [
+  [1, 2, 7],
+  [4, 5, 6],
+  [7, 8, 4]
+]
+const diagonalDifference = (arr) => {
+  let diagonal1 = 0
+  let diagonal2 = 0
+
+  for (let i = 0; i < arr.length; i++) {
+    diagonal1 += arr[i][i]
+    // arr.length - i gives us the index of the element on the opposite diagonal.
+    // For example, if we're on the first row (i = 0) of a 3x3 matrix
+    // arr.length - i gives us 3, which is the
+    // index of the element on the opposite diagonal (7).
+    // we subtract 1 from this index to get the correct index of the element
+    // on the second diagonal. For example, if we're on the first row of a 3x3 matrix
+    // arr.length - i - 1 gives us 2, which is the index of the first element on the second diagonal (3).
+
+    diagonal2 += arr[i][arr.length - i - 1]
+  }
+  return Math.abs(diagonal1 - diagonal2)
+}
+
+console.log(diagonalDifference(matrix))
